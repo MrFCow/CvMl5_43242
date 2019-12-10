@@ -15,7 +15,7 @@ let objects = [];
 
 function setup() {
   
-  createCanvas(320, 240);
+  createCanvas(240, 320);
   //video = createCapture(VIDEO);
   video = createCapture({
     audio: false,
@@ -23,7 +23,7 @@ function setup() {
       facingMode: "environment"
     }
   });
-  video.size(320, 240);
+  video.size(240, 320);
 
   // Create a YOLO method
   yolo = ml5.YOLO(video, startDetecting);
