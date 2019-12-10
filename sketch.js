@@ -59,6 +59,7 @@ function setup() {
   video.hide();
   status = select('#status');
   mode_div = select('#mode');
+  result_div = select('#mode');
 
   mode_div.html(mode)
 }
@@ -84,6 +85,7 @@ function startDetecting() {
 function detect() {
   yolo.detect(function(err, results) {
     objects = results;
+    result_div.html(JSON.stringify(objects))
     detect();
   });
 }
