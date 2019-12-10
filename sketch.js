@@ -20,13 +20,18 @@ function swap() {
 	  video = createCapture({
       audio: false,
       video: {
-        facingMode: "environment"
+        facingMode: {ideal:"environment"}
       }
 	  });
     mode = 0;
   } else { // using rear, swap to front - 1
     video.remove();
-	  video = createCapture();
+	  video = createCapture({
+      audio: false,
+      video: {
+        facingMode: {ideal:"user"}
+      }
+	  });
     mode = 1;
   }
   video.size(240, 320);
@@ -41,7 +46,7 @@ function setup() {
   video = createCapture({
     audio: false,
     video: {
-      facingMode: "environment"
+      facingMode: {ideal:"environment"}
     }
   });
   video.size(240, 320);
