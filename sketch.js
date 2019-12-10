@@ -26,13 +26,12 @@ function swap() {
     mode = 0;
   } else { // using rear, swap to front - 1
     video.remove();
-	  video = createCapture({
-      audio: false
-	  });
+	  video = createCapture();
     mode = 1;
   }
   video.size(240, 320);
   video.hide();
+  mode_div.html(mode)
 }
 
 function setup() {
@@ -54,6 +53,9 @@ function setup() {
   // Hide the original video
   video.hide();
   status = select('#status');
+  mode_div = select('#mode');
+
+  mode_div.html(mode)
 }
 
 function draw() {
