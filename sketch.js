@@ -12,25 +12,27 @@ let video;
 let yolo;
 let status;
 let objects = [];
-let mode = 0;
+let mode = 0; // 0: rear, 1: front
 
 function swap() {
-  if (mode == 1){
+  if (mode === 1){ // using front, swap to rear - 0
+    video.remove();
 	  video = createCapture({
-		audio: false,
-		video: {
-		  facingMode: "environment"
-		}
+      audio: false,
+      video: {
+        facingMode: "environment"
+      }
 	  });
-      model = 0;
-  } else {
+    mode = 0;
+  } else { // using rear, swap to front - 1
+    video.remove();
 	  video = createCapture({
-		audio: false,
-		video: {
-		  facingMode: "facing"
-		}
+      audio: false,
+      video: {
+        facingMode: "user"
+      }
 	  });
-      mode = 1;
+    mode = 1;
   }
   video.size(240, 320);
   video.hide();
