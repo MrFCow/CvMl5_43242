@@ -16,7 +16,13 @@ let objects = [];
 function setup() {
   
   createCanvas(320, 240);
-  video = createCapture(VIDEO);
+  //video = createCapture(VIDEO);
+  video = createCapture({
+    audio: false,
+    video: {
+      facingMode: "environment"
+    }
+  });
   video.size(320, 240);
 
   // Create a YOLO method
