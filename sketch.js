@@ -27,10 +27,7 @@ function swap() {
   } else { // using rear, swap to front - 1
     video.remove();
 	  video = createCapture({
-      audio: false,
-      video: {
-        facingMode: "user"
-      }
+      audio: false
 	  });
     mode = 1;
   }
