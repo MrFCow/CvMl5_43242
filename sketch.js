@@ -66,9 +66,11 @@ function setup() {
   video.hide();
   status = select('#status');
   mode_div = select('#mode');
-  result_div = select('#mode');
+  result_div = select('#results');
+  yolo_options_div = select('#yolo_options')
 
   mode_div.html(mode)
+  yolo_options_div.html(yolo.filterBoxesThreshold.toString() + ', ' + yolo.IOUThreshold.toString() + ', ' + yolo.classProbThreshold.toString())
 }
 
 function draw() {
@@ -93,6 +95,7 @@ function detect() {
   yolo.detect(function(err, results) {
     objects = results;
     result_div.html(JSON.stringify(objects))
+    yolo_options_div.html(yolo.filterBoxesThreshold.toString() + ', ' + yolo.IOUThreshold.toString() + ', ' + yolo.classProbThreshold.toString())
     detect();
   });
 }
