@@ -52,7 +52,14 @@ function setup() {
   video.size(240, 320);
 
   // Create a YOLO method
-  yolo = ml5.YOLO(video, startDetecting);
+  yolo_options = {
+    // modelUrl: 'https://raw.githubusercontent.com/ml5js/ml5-data-and-training/master/models/YOLO/model.json',
+    filterBoxesThreshold: 0.01,
+    IOUThreshold: 0.1,
+    classProbThreshold: 0.1,
+  };
+
+  yolo = ml5.YOLO(video, yolo_options, startDetecting);
   //objectDetector = ml5.objectDetector(video, startDetecting);
 
   // Hide the original video
