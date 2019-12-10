@@ -26,8 +26,8 @@ function setup() {
   video.size(240, 320);
 
   // Create a YOLO method
-  yolo = ml5.YOLO(video, startDetecting);
-  //objectDetector = ml5.objectDetector(video, startDetecting);
+  //yolo = ml5.YOLO(video, startDetecting);
+  objectDetector = ml5.objectDetector(video, startDetecting);
 
   // Hide the original video
   video.hide();
