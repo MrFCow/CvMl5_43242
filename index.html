@@ -5,11 +5,32 @@
   <title>Real time Object Detection using YOLO and p5.js</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
   <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/screenlog@0.3.0/screenlog.min.js" type="text/javascript"></script>
   
+  <script type="text/javascript">
+    window.onerror = function(msg, url, line, col, error) {
+    // Note that col & error are new to the HTML 5 spec and may not be 
+    // supported in every browser.  It worked for me in Chrome.
+    var extra = !col ? '' : '\ncolumn: ' + col;
+    extra += !error ? '' : '\nerror: ' + error;
+
+    // You can view the information in an alert to see things working like this:
+    console.log("Error: " + msg + "\nurl: " + url + "\nline: " + line + extra);
+
+    // TODO: Report this error via ajax so you can keep track
+    //       of what pages have JS issues
+
+    var suppressErrorAlert = true;
+    // If you return true, then error alerts (like in older versions of 
+    // Internet Explorer) will be suppressed.
+    return suppressErrorAlert;
+  };
+  </script>
+
 </head>
 <body>
   <h1>Real time Object Detection using YOLO and p5.js</h1>
