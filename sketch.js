@@ -37,8 +37,8 @@ function swap() {
 	  });
     mode = 1;
   }
-  video.size(240, 320);
   video.elt.setAttribute('playsinline', '');
+  video.size(240, 320);
   video.hide();
   mode_div.html(mode)
 }
@@ -53,8 +53,9 @@ function setup() {
       facingMode: {ideal:"environment"}
     }
   });
-  video.size(240, 320);
   video.elt.setAttribute('playsinline', '');
+  video.size(240, 320);
+  
 
   // Create a YOLO method
   yolo_options = {
