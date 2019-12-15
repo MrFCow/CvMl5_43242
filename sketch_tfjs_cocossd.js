@@ -17,6 +17,7 @@ function swap_camera() {
       video: {
         width: video_width,
         height: video_height,
+        aspectRatio: aspect_ratio,
         facingMode: {ideal:"environment"}
       }
 	  });
@@ -27,6 +28,7 @@ function swap_camera() {
         video: {
           width: video_width,
           height: video_height,
+          aspectRatio: aspect_ratio,
           facingMode: {ideal:"user"}
         }
 	    });
@@ -73,6 +75,8 @@ function setup() {
     video_width = 800;
     video_height = 450;
   }
+  aspect_ratio = video_width/video_height
+
   Promise.longStackTraces();
   createCanvas(video_width, video_height);
   // create video capture.  For PoseNet, videos must be square
@@ -81,6 +85,7 @@ function setup() {
     video: {
       width: video_width,
       height: video_height,
+      aspectRatio: aspect_ratio,
       facingMode: {ideal:"environment"}
     }
   });
@@ -112,6 +117,7 @@ function windowResized() {
     video_width = 800;
     video_height = 450;
   }
+  aspect_ratio = video_width/video_height
   resizeCanvas(video_width, video_height);
 
   capture.remove();
@@ -121,6 +127,7 @@ function windowResized() {
       video: {
         width: video_width,
         height: video_height,
+        aspectRatio: aspect_ratio,
         facingMode: {ideal:"user"}
       }
 	  });
@@ -130,6 +137,7 @@ function windowResized() {
         video: {
           width: video_width,
           height: video_height,
+          aspectRatio: aspect_ratio,
           facingMode: {ideal:"environment"}
         }
 	    });
