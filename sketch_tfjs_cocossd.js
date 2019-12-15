@@ -1,5 +1,6 @@
 let video_width;
 let video_height;
+let aspect_ratio;
 let result;
 let coco_model;
 let capture;
