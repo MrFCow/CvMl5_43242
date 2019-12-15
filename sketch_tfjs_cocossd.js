@@ -111,8 +111,8 @@ function setup() {
 }
 
 
-function windowResized() {
-  console.log("enter windowResized")
+function deviceTurned() {
+  console.log("enter deviceTurned")
   if (windowHeight > windowWidth){
     video_width = 450;
     video_height = 800;
