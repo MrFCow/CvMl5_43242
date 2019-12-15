@@ -66,8 +66,13 @@ function detect_function() {
 }
 
 function setup() {
-  video_width = windowWidth;
-  video_height = windowHeight;
+  if (windowHeight > windowWidth){
+    video_width = 300;
+    video_height = 400;
+  } else{
+    video_width = 400;
+    video_height = 300;
+  }
   Promise.longStackTraces();
   createCanvas(video_width, video_height);
   // create video capture.  For PoseNet, videos must be square
@@ -98,9 +103,18 @@ function setup() {
   failed =>{console.log("failed at cocoSsd.load()")});
 }
 
+
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  if (windowHeight > windowWidth){
+    video_width = 300;
+    video_height = 400;
+  } else{
+    video_width = 400;
+    video_height = 300;
+  }
+  resizeCanvas(video_width, video_height);
 }
+
 
 function draw() {
   background(255);
