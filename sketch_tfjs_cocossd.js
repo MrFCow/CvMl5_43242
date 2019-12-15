@@ -113,6 +113,7 @@ function setup() {
 
 function deviceTurned() {
   console.log("enter deviceTurned")
+  console.log("windowsHeight: ${windowHeight}, windowWidth: ${windowWidth}")
   if (windowHeight > windowWidth){
     video_width = 450;
     video_height = 800;
@@ -135,15 +136,15 @@ function deviceTurned() {
       }
 	  });
   } else {
-	    capture = createCapture({
-        audio: false,
-        video: {
-          width: video_width,
-          height: video_height,
-          aspectRatio: aspect_ratio,
-          facingMode: {ideal:"environment"}
-        }
-	    });
+    capture = createCapture({
+      audio: false,
+      video: {
+        width: video_width,
+        height: video_height,
+        aspectRatio: aspect_ratio,
+        facingMode: {ideal:"environment"}
+      }
+    });
   }
   capture.hide();
 }
@@ -154,7 +155,6 @@ function draw() {
   if (draw_image_flag){
     image(capture, 0, 0, video_width, video_height);
   }
-  //noStroke();
   
   if (predicted && draw_image_flag){
     predicted.map(predicted_obj => {
