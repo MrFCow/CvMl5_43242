@@ -5,10 +5,11 @@ let coco_model;
 let capture;
 let predicted;
 let camera_mode = 0; // 0: rear, 1: front
-let draw_colors = ['red','green','blue','cyan','margenta','yellow']
+let draw_colors = ['red','green','blue','cyan','margenta','yellow'];
+let tf_backend_mode = 0; // 0: cpu, 1: webgl
+let draw_image_flag = true;
 
-
-function swap() {
+function swap_camera() {
   capture.remove();
   if (camera_mode === 1){ // using front, swap to rear - 0
 	  capture = createCapture({
@@ -32,6 +33,21 @@ function swap() {
     camera_mode = 1;
   }
   capture.hide();
+}
+
+function swap_tf_mode(){
+  if (tf_backend_mode === 1){ // using webgl, swap to cpu - 0
+	  tf.setBackend('cpu');
+    tf_backend_mode = 0;
+  } else { // using rear, swap to front - 1
+	    tf.setBackend('webgl');
+      tf_backend_mode = 1;
+  }
+  console.log("Tensorflow mode: +" + tf.getBackend());
+}
+
+function swap_draw_image(){
+  draw_image_flag = !draw_image_flag;
 }
 
 function detect_function() {
@@ -65,7 +81,7 @@ function setup() {
   capture.hide();
 
   console.log("load model");
-  
+  console.log("Tensorflow mode: " + tf.getBackend());
   // Load the model.
   cocoSsd.load().then(model => {
     // detect objects in the image.
@@ -82,8 +98,9 @@ function setup() {
 
 function draw() {
   background(255);
-  image(capture, 0, 0, video_width, video_height);
-
+  if (draw_image_flag){
+    image(capture, 0, 0, video_width, video_height);
+  }
   //noStroke();
   
   if (predicted){
