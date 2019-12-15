@@ -113,7 +113,7 @@ function setup() {
 
 function deviceTurned() {
   console.log("enter deviceTurned")
-  console.log("windowsHeight: ${windowHeight}, windowWidth: ${windowWidth}")
+  console.log(`windowsHeight: ${windowHeight}, windowWidth: ${windowWidth}`)
   if (windowHeight > windowWidth){
     video_width = 450;
     video_height = 800;
