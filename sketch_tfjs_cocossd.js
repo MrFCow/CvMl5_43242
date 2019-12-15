@@ -35,7 +35,7 @@ function swap() {
 }
 
 function detect_function() {
-  console.log("detect_function");
+  //console.log("detect_function");
     
   coco_model.detect(capture.elt).then(predictions => {
     predicted = predictions
@@ -69,7 +69,7 @@ function setup() {
     // detect objects in the image.
     coco_model = model;
     console.log("model loaded");
-    console.log(coco_model);
+    //console.log(coco_model); // crash with screenlog.js
     requestAnimationFrame(function() {
       detect_function();
     });
