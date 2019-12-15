@@ -103,7 +103,7 @@ function draw() {
   }
   //noStroke();
   
-  if (predicted){
+  if (predicted && draw_image_flag){
     predicted.map(predicted_obj => {
       idx = predicted.indexOf(predicted_obj)
       
