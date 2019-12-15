@@ -18,8 +18,8 @@ let objects = [];
 let mode = 0; // 0: rear, 1: front
 
 function swap() {
+  video.remove();
   if (mode === 1){ // using front, swap to rear - 0
-    video.remove();
 	  video = createCapture({
       audio: false,
       video: {
@@ -28,13 +28,12 @@ function swap() {
 	  });
     mode = 0;
   } else { // using rear, swap to front - 1
-    video.remove();
-	  video = createCapture({
-      audio: false,
-      video: {
-        facingMode: {ideal:"user"}
-      }
-	  });
+	    video = createCapture({
+        audio: false,
+        video: {
+          facingMode: {ideal:"user"}
+        }
+	    });
     mode = 1;
   }
   video.elt.setAttribute('playsinline', '');
