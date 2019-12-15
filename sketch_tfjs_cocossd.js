@@ -67,11 +67,11 @@ function detect_function() {
 
 function setup() {
   if (windowHeight > windowWidth){
-    video_width = 300;
-    video_height = 400;
+    video_width = 450;
+    video_height = 800;
   } else{
-    video_width = 400;
-    video_height = 300;
+    video_width = 800;
+    video_height = 450;
   }
   Promise.longStackTraces();
   createCanvas(video_width, video_height);
@@ -106,11 +106,11 @@ function setup() {
 
 function windowResized() {
   if (windowHeight > windowWidth){
-    video_width = 300;
-    video_height = 400;
+    video_width = 450;
+    video_height = 800;
   } else{
-    video_width = 400;
-    video_height = 300;
+    video_width = 800;
+    video_height = 450;
   }
   resizeCanvas(video_width, video_height);
 }
