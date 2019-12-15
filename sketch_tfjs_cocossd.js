@@ -112,6 +112,7 @@ function setup() {
 
 
 function windowResized() {
+  console.log("enter windowResized")
   if (windowHeight > windowWidth){
     video_width = 450;
     video_height = 800;
