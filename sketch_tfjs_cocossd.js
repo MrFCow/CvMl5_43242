@@ -36,6 +36,7 @@ function swap_camera() {
     camera_mode = 1;
   }
   capture.hide();
+  console.log("swap_camera done")
 }
 
 function swap_tf_mode(){
