@@ -1,5 +1,5 @@
-const video_width = 400;
-const video_height = 300;
+let video_width;
+let video_height;
 let result;
 let coco_model;
 let capture;
@@ -66,6 +66,8 @@ function detect_function() {
 }
 
 function setup() {
+  video_width = windowWidth;
+  video_height = windowHeight;
   Promise.longStackTraces();
   createCanvas(video_width, video_height);
   // create video capture.  For PoseNet, videos must be square
