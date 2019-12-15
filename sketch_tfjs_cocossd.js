@@ -113,6 +113,28 @@ function windowResized() {
     video_height = 450;
   }
   resizeCanvas(video_width, video_height);
+
+  capture.remove();
+  if (camera_mode === 1){
+	  capture = createCapture({
+      audio: false,
+      video: {
+        width: video_width,
+        height: video_height,
+        facingMode: {ideal:"user"}
+      }
+	  });
+  } else {
+	    capture = createCapture({
+        audio: false,
+        video: {
+          width: video_width,
+          height: video_height,
+          facingMode: {ideal:"environment"}
+        }
+	    });
+  }
+  capture.hide();
 }
 
 
