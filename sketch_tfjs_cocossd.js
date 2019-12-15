@@ -43,7 +43,7 @@ function swap_tf_mode(){
 	    tf.setBackend('webgl');
       tf_backend_mode = 1;
   }
-  console.log("Tensorflow mode: +" + tf.getBackend());
+  console.log("Tensorflow mode: " + tf.getBackend());
 }
 
 function swap_draw_image(){
@@ -89,13 +89,17 @@ function setup() {
     // detect objects in the image.
     coco_model = model;
     console.log("model loaded");
-    console.log("Tensorflow using: " +tf.getBackend());
+    console.log("Tensorflow using: " + tf.getBackend());
     //console.log(coco_model); // crash with screenlog.js
     requestAnimationFrame(function() {
       detect_function();
     });
   },
   failed =>{console.log("failed at cocoSsd.load()")});
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
