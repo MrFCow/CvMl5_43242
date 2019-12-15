@@ -40,7 +40,9 @@ function detect_function() {
   coco_model.detect(capture.elt).then(predictions => {
     predicted = predictions
     //console.log('Predictions: ', predictions);
-  }, failed => {console.log("failed at detect")}
+  }, failed => {
+      //console.log("failed at detect")
+      }
     );
   requestAnimationFrame(function() {
     detect_function();
@@ -69,6 +71,7 @@ function setup() {
     // detect objects in the image.
     coco_model = model;
     console.log("model loaded");
+    console.log("Tensorflow using: " +tf.getBackend());
     //console.log(coco_model); // crash with screenlog.js
     requestAnimationFrame(function() {
       detect_function();
