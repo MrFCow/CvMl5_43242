@@ -101,6 +101,10 @@ function setup() {
   Resize canvas
 */
 function windowResized() {
+  if (!capture_play_mode){  // do not reset capture or canvas if it's in pause mode
+    return 
+  }
+
   if (windowHeight > windowWidth){
     createCanvas(video_height, video_width); // 450 x 800
   } else{
