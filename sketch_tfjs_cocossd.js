@@ -127,6 +127,8 @@ function deviceTurned() {
     });
   }
   capture.hide();
+  console.log("Canvas: ${width}x${height}")
+  console.log("Capture: ${capture.width}x${capture.height}")
 }
 
 
