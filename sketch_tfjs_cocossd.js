@@ -123,7 +123,8 @@ function windowResized() {
   }
   //aspect_ratio = video_width/video_height
   resizeCanvas(video_width, video_height);
-
+  video_width = 800;
+  video_height = 450;
   capture.remove();
   if (camera_mode === 1){
 	  capture = createCapture({
