@@ -35,7 +35,7 @@ function swap_camera() {
 	    });
     camera_mode = 1;
   }
-  //capture.hide();
+  capture.hide();
   console.log("swap_camera done")
 }
 
@@ -79,9 +79,9 @@ function setup() {
   }
   aspect_ratio = video_width/video_height
 
-  Promise.longStackTraces();
+  //Promise.longStackTraces();
   createCanvas(video_width, video_height);
-  // create video capture.  For PoseNet, videos must be square
+  // create video capture.
   capture = createCapture({
     audio: false,
     video: {
@@ -91,8 +91,8 @@ function setup() {
       facingMode: {ideal:"environment"}
     }
   });
-  //capture.size(video_width, video_height);
-  //capture.hide();
+  capture.size(video_width, video_height);
+  capture.hide();
 
   console.log("load model");
   console.log("Tensorflow mode: " + tf.getBackend());
@@ -112,9 +112,8 @@ function setup() {
 
 
 function windowResized() {
-/*
-  console.log("enter windowResized")
-  console.log(`windowsHeight: ${windowHeight}, windowWidth: ${windowWidth}`)
+  //console.log("enter windowResized")
+  //console.log(`windowsHeight: ${windowHeight}, windowWidth: ${windowWidth}`)
   if (windowHeight > windowWidth){
     video_width = 450;
     video_height = 800;
@@ -122,7 +121,7 @@ function windowResized() {
     video_width = 800;
     video_height = 450;
   }
-  aspect_ratio = video_width/video_height
+  //aspect_ratio = video_width/video_height
   resizeCanvas(video_width, video_height);
 
   capture.remove();
@@ -147,8 +146,9 @@ function windowResized() {
       }
     });
   }
+  capture.size(video_width, video_height);
   capture.hide();
-*/
+
 }
 
 
