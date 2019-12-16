@@ -155,7 +155,8 @@ function windowResized() {
 function draw() {
   background(255);
   if (draw_image_flag){
-    image(capture, 0, 0, video_width, video_height);
+    //image(capture, 0, 0, video_width, video_height);
+    image(capture, 0, 0);
   }
 
 
