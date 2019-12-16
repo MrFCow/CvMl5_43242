@@ -99,7 +99,7 @@ function setup() {
 }
 
 
-function deviceTurned() {
+function windowResized() {
   if (windowHeight > windowWidth){
     createCanvas(video_height, video_width); // 450 x 800
   } else{
@@ -127,8 +127,8 @@ function deviceTurned() {
     });
   }
   capture.hide();
-  console.log("Canvas: ${width}x${height}")
-  console.log("Capture: ${capture.width}x${capture.height}")
+  console.log(`Canvas: ${width} x ${height}`)
+  console.log(`Capture: ${capture.width} x ${capture.height}`)
 }
 
 
