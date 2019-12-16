@@ -8,6 +8,7 @@ let camera_mode = 0; // 0: rear, 1: front
 let draw_colors = ['red','green','blue','cyan','margenta','yellow'];
 let tf_backend_mode = 0; // 0: cpu, 1: webgl
 let draw_image_flag = true;
+let capture_play_mode = true;
 
 function swap_camera() {
   capture.remove();
@@ -64,13 +65,12 @@ function detect_function() {
 }
 
 function setup() {
+  //Promise.longStackTraces();
   if (windowHeight > windowWidth){
     createCanvas(video_height, video_width); // 450 x 800
   } else{
     createCanvas(video_width, video_height); // 800 x 450
   }
-
-  //Promise.longStackTraces();
 
   capture = createCapture({
     audio: false,
@@ -83,7 +83,6 @@ function setup() {
   capture.hide();
 
   console.log("Waiting model");
-
   // Load the model.
   cocoSsd.load().then(model => {
     // detect objects in the image.
@@ -98,7 +97,9 @@ function setup() {
   failed =>{console.log("failed at cocoSsd.load()")});
 }
 
-
+/*
+  Resize canvas
+*/
 function windowResized() {
   if (windowHeight > windowWidth){
     createCanvas(video_height, video_width); // 450 x 800
@@ -131,6 +132,18 @@ function windowResized() {
   console.log(`Capture: ${capture.width} x ${capture.height}`)
 }
 
+/*
+  try pausing the capture, not stop detect
+*/
+function touchStarted() {
+  if (capture_play_mode){ // toggle to pause
+    capture.pause();
+  }
+  else {  // toggle to resume
+    capture.play()
+  }
+  capture_play_mode = ! capture_play_mode;
+}
 
 function draw() {
   background(255);
