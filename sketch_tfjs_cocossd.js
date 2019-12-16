@@ -35,7 +35,7 @@ function swap_camera() {
 	    });
     camera_mode = 1;
   }
-  capture.hide();
+  //capture.hide();
   console.log("swap_camera done")
 }
 
@@ -92,7 +92,7 @@ function setup() {
     }
   });
   //capture.size(video_width, video_height);
-  capture.hide();
+  //capture.hide();
 
   console.log("load model");
   console.log("Tensorflow mode: " + tf.getBackend());
