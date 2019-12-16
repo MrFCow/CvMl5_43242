@@ -22,6 +22,7 @@
 			$(document).ready(function() {
 				screenLog.init();
 				console.log("start");
+				console.log("version: " + $("script[src*='sketch']").attr('src').split('?')[1].split('=')[1])
 			});
 		</script>
 
