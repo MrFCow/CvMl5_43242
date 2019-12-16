@@ -18,7 +18,7 @@ function swap_camera() {
       video: {
         width: video_width,
         height: video_height,
-        aspectRatio: aspect_ratio,
+        //aspectRatio: aspect_ratio,
         facingMode: {ideal:"environment"}
       }
 	  });
@@ -29,7 +29,7 @@ function swap_camera() {
         video: {
           width: video_width,
           height: video_height,
-          aspectRatio: aspect_ratio,
+          //aspectRatio: aspect_ratio,
           facingMode: {ideal:"user"}
         }
 	    });
@@ -87,7 +87,7 @@ function setup() {
     video: {
       width: video_width,
       height: video_height,
-      aspectRatio: aspect_ratio,
+      //aspectRatio: aspect_ratio,
       facingMode: {ideal:"environment"}
     }
   });
@@ -112,6 +112,7 @@ function setup() {
 
 
 function windowResized() {
+/*
   console.log("enter windowResized")
   console.log(`windowsHeight: ${windowHeight}, windowWidth: ${windowWidth}`)
   if (windowHeight > windowWidth){
@@ -131,7 +132,7 @@ function windowResized() {
       video: {
         width: video_width,
         height: video_height,
-        aspectRatio: aspect_ratio,
+        //aspectRatio: aspect_ratio,
         facingMode: {ideal:"user"}
       }
 	  });
@@ -141,12 +142,13 @@ function windowResized() {
       video: {
         width: video_width,
         height: video_height,
-        aspectRatio: aspect_ratio,
+        //aspectRatio: aspect_ratio,
         facingMode: {ideal:"environment"}
       }
     });
   }
   capture.hide();
+*/
 }
 
 
