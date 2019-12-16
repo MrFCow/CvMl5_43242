@@ -111,8 +111,8 @@ function setup() {
 }
 
 
-function deviceTurned() {
-  console.log("enter deviceTurned")
+function windowResized() {
+  console.log("enter windowResized")
   console.log(`windowsHeight: ${windowHeight}, windowWidth: ${windowWidth}`)
   if (windowHeight > windowWidth){
     video_width = 450;
@@ -155,7 +155,8 @@ function draw() {
   if (draw_image_flag){
     image(capture, 0, 0, video_width, video_height);
   }
-  
+
+
   if (predicted && draw_image_flag){
     predicted.map(predicted_obj => {
       idx = predicted.indexOf(predicted_obj)
@@ -171,4 +172,9 @@ function draw() {
       text(predicted_obj.class+"[" + idx + "]", predicted_obj.bbox[0], predicted_obj.bbox[1], 100, 15)
     });
   }
+
+  const fps = frameRate();
+  fill(255);
+  stroke(0);
+  text("FPS: " + fps.toFixed(2), 10, height - 10);
 }
