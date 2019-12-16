@@ -1,7 +1,6 @@
-let video_width;
-let video_height;
-let aspect_ratio;
-let result;
+let video_width = 800;
+let video_height = 450;
+
 let coco_model;
 let capture;
 let predicted;
@@ -18,7 +17,6 @@ function swap_camera() {
       video: {
         width: video_width,
         height: video_height,
-        //aspectRatio: aspect_ratio,
         facingMode: {ideal:"environment"}
       }
 	  });
@@ -29,7 +27,6 @@ function swap_camera() {
         video: {
           width: video_width,
           height: video_height,
-          //aspectRatio: aspect_ratio,
           facingMode: {ideal:"user"}
         }
 	    });
@@ -55,11 +52,8 @@ function swap_draw_image(){
 }
 
 function detect_function() {
-  //console.log("detect_function");
-    
   coco_model.detect(capture.elt).then(predictions => {
     predicted = predictions
-    //console.log('Predictions: ', predictions);
   }, failed => {
       //console.log("failed at detect")
       }
@@ -71,38 +65,34 @@ function detect_function() {
 
 function setup() {
   if (windowHeight > windowWidth){
-    video_width = 450;
-    video_height = 800;
+    createCanvas(video_height, video_width);
   } else{
-    video_width = 800;
-    video_height = 450;
+    createCanvas(video_width, video_height);
   }
-  aspect_ratio = video_width/video_height
 
   //Promise.longStackTraces();
-  createCanvas(video_width, video_height);
-  // create video capture.
+
   capture = createCapture({
     audio: false,
     video: {
       width: video_width,
       height: video_height,
-      //aspectRatio: aspect_ratio,
       facingMode: {ideal:"environment"}
     }
   });
   capture.size(video_width, video_height);
   capture.hide();
 
-  console.log("load model");
+  console.log("Waiting model");
   console.log("Tensorflow mode: " + tf.getBackend());
+
   // Load the model.
   cocoSsd.load().then(model => {
     // detect objects in the image.
     coco_model = model;
     console.log("model loaded");
     console.log("Tensorflow using: " + tf.getBackend());
-    //console.log(coco_model); // crash with screenlog.js
+    
     requestAnimationFrame(function() {
       detect_function();
     });
@@ -111,20 +101,14 @@ function setup() {
 }
 
 
-function windowResized() {
-  //console.log("enter windowResized")
-  //console.log(`windowsHeight: ${windowHeight}, windowWidth: ${windowWidth}`)
+function deviceTurned() {
+
   if (windowHeight > windowWidth){
-    video_width = 450;
-    video_height = 800;
+    createCanvas(video_height, video_width);
   } else{
-    video_width = 800;
-    video_height = 450;
+    createCanvas(video_width, video_height);
   }
-  //aspect_ratio = video_width/video_height
-  resizeCanvas(video_width, video_height);
-  video_width = 800;
-  video_height = 450;
+
   capture.remove();
   if (camera_mode === 1){
 	  capture = createCapture({
@@ -132,7 +116,6 @@ function windowResized() {
       video: {
         width: video_width,
         height: video_height,
-        //aspectRatio: aspect_ratio,
         facingMode: {ideal:"user"}
       }
 	  });
@@ -142,24 +125,20 @@ function windowResized() {
       video: {
         width: video_width,
         height: video_height,
-        //aspectRatio: aspect_ratio,
         facingMode: {ideal:"environment"}
       }
     });
   }
   capture.size(video_width, video_height);
   capture.hide();
-
 }
 
 
 function draw() {
   background(255);
-  if (draw_image_flag){
-    //image(capture, 0, 0, video_width, video_height);
+  if (draw_image_flag && capture){
     image(capture, 0, 0);
   }
-
 
   if (predicted && draw_image_flag){
     predicted.map(predicted_obj => {
