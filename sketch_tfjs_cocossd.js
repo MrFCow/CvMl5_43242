@@ -1,5 +1,5 @@
 let video_width = 800;
-let video_height = 450;
+let video_height = 600;
 
 let coco_model;
 let capture;
