@@ -65,9 +65,9 @@ function detect_function() {
 
 function setup() {
   if (windowHeight > windowWidth){
-    createCanvas(video_height, video_width);
+    createCanvas(video_height, video_width); // 450 x 800
   } else{
-    createCanvas(video_width, video_height);
+    createCanvas(video_width, video_height); // 800 x 450
   }
 
   //Promise.longStackTraces();
@@ -80,11 +80,9 @@ function setup() {
       facingMode: {ideal:"environment"}
     }
   });
-  capture.size(video_width, video_height);
   capture.hide();
 
   console.log("Waiting model");
-  console.log("Tensorflow mode: " + tf.getBackend());
 
   // Load the model.
   cocoSsd.load().then(model => {
@@ -102,11 +100,10 @@ function setup() {
 
 
 function deviceTurned() {
-
   if (windowHeight > windowWidth){
-    createCanvas(video_height, video_width);
+    createCanvas(video_height, video_width); // 450 x 800
   } else{
-    createCanvas(video_width, video_height);
+    createCanvas(video_width, video_height); // 800 x 450
   }
 
   capture.remove();
@@ -129,7 +126,6 @@ function deviceTurned() {
       }
     });
   }
-  capture.size(video_width, video_height);
   capture.hide();
 }
 
@@ -147,7 +143,6 @@ function draw() {
       selected_color = draw_colors[idx]
       stroke(selected_color);
       
-
       noFill();
       rect(...predicted_obj.bbox);
 
