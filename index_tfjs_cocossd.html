@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- requirejs
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+		-->
+
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -10,6 +14,7 @@
 
 		<!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
 		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+
 		<!-- Load the coco-ssd model. -->
 		<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
 
@@ -23,6 +28,16 @@
 				screenLog.init();
 				console.log("version: " + $("script[src*='sketch']").attr('src').split('?')[1].split('=')[1])
 			});
+		</script>
+
+		<script type="text/javascript"> 
+			var idb_export;
+		</script>
+			
+		<!-- indexedDB -->
+		<script type="module">
+			import { openDB, deleteDB, wrap, unwrap } from 'https://unpkg.com/idb?module';
+			idb_export = { openDB, deleteDB, wrap, unwrap }
 		</script>
 
 		<meta charset="utf-8" />
@@ -69,12 +84,16 @@
 		});
 	</script>
 	-->
-    <script src="sketch_tfjs_cocossd.js?version=201912182004"></script>
+    <script defer src="sketch_tfjs_cocossd.js?version=201912182004"></script>
 	<div>
 		<button onclick="swap_camera()">swap camera</button>
 		<button onclick="swap_tf_mode()" style="display:none">swap Tensorlfow backend</button>
 		<button onclick="swap_draw_image()">swap draw image</button>
 		<button onclick="toggle_training_frame_display()">toggle training frame</button>
 	</div>
+	<div>
+		<button id="detection" onclick="toggle_detection()" style="-webkit-appearance:button;width:400px">start detect</button>
+	</div>
+	<div ontouchstart="touchstart_take_photo(event)" ontouchend="touchend_take_photo(event)" onmousedown="touchstart_take_photo(event)" onmouseup="touchend_take_photo(event)" style="-webkit-appearance:button;width:400px"> Hold to Take Photo </div>
 	</body>
 </html>
