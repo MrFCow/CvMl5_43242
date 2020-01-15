@@ -82,7 +82,7 @@ function detect_function() {
   // TODO: Tesseract detect
   if (flag_tesseract_loaded){
     (async () => {
-      const { data: { text } } = await worker.recognize(capture.elt);
+      const { data: { text } } = await tesseract_worker.recognize(document.getElementById('defaultCanvas0'));
       console.log(text);
     })();
   }
